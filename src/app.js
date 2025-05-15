@@ -20,11 +20,12 @@ app.use(cookieParser());
 // Routes
 
 // import adminRoutes from "./routes/admin.routes.js";
-// import authRoutes from "./routes/auth.routes.js";
+import authRoutes from "./routes/auth.route.js";
 
 
 
 app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 // Health Check
 app.get("/", (req, res) => {

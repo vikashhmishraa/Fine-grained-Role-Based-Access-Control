@@ -1,6 +1,5 @@
 import express from 'express';
 import { authenticate, authorizeRoles, authorizePermissions } from '../middlewares/auth.middleware.js';
-import {createUserByAdmin} from '../controllers/admin.controller.js';
 
 import { createRole, getRoles } from "../controllers/role.controller.js"
 import { createPermission, getPermissions } from "../controllers/permission.controller.js"

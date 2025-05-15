@@ -2,7 +2,7 @@ import Role from "../models/role.model.js";
 import Permission from "../models/permission.model.js";
 
 
-exports.createRole = async (req, res) => {
+const createRole = async (req, res) => {
   const { name, permissionIds } = req.body;
 
   const role = await Role.create({ name, permissions: permissionIds });
@@ -10,7 +10,7 @@ exports.createRole = async (req, res) => {
   res.json(role);
 };
 
-exports.getRoles = async (req, res) => {
+const getRoles = async (req, res) => {
   const roles = await Role.find().populate("permissions");
   res.json(roles);
 };
