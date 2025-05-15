@@ -2,11 +2,14 @@ import express from 'express';
 import { authenticate, authorizeRoles, authorizePermissions } from '../middlewares/auth.middleware.js';
 import {createUserByAdmin} from '../controllers/admin.controller.js';
 
+import { createRole, getRoles } from "../controllers/role.controller.js"
+import { createPermission, getPermissions } from "../controllers/permission.controller.js"
+
+
 import authorize from '../middlewares/authorize.js'; // 👈 Import the authorize middleware
 const router = express.Router();
 
 
-router.post('/create-user', authenticate, authorizeRoles('admin'), createUserByAdmin); // 👈 Add authenticate and authorize middleware here
 router.get('/get-test',authenticate, authorizeRoles('admin'),authorizePermissions('okay'), // 👈 Add authenticate and authorize middleware here
 // authorize("okay"),
  (req, res) => {
@@ -15,6 +18,13 @@ router.get('/get-test',authenticate, authorizeRoles('admin'),authorizePermission
   res.status(200).json({ message: 'successfully Result' })
 })
 
+
+// Role and Permission routes
+router.post("/role",authorizeRoles('admin'), createRole);
+router.get("/roles",authorizeRoles('admin'), getRoles);
+
+router.post("/permission",authorizeRoles('admin'), createPermission);
+router.get("/permissions",authorizeRoles('admin'), getPermissions);
 
 
 

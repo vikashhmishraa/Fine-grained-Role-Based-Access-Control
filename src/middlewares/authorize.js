@@ -25,4 +25,4 @@ const authorize = (requiredPermission) => {
   };
 };
 
-module.exports = authorize;
+export default authorize;

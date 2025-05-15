@@ -6,6 +6,8 @@ import { ApiError } from "./utils/ApiError.js";
 import { ApiResponse } from "./utils/ApiResponse.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 
+import adminRoutes from "./routes/admin.routes.js";
+
 const app = express();
 
 // Middlewares
@@ -17,7 +19,12 @@ app.use(cookieParser());
 
 // Routes
 
+// import adminRoutes from "./routes/admin.routes.js";
+// import authRoutes from "./routes/auth.routes.js";
 
+
+
+app.use("/api/v1/admin", adminRoutes);
 
 // Health Check
 app.get("/", (req, res) => {
